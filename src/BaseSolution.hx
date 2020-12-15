@@ -1,10 +1,17 @@
 import AOC_Utils;
 
+@:autoBuild(Macros.addChallengeRawInputAndUrl())
 class BaseSolution {
-    public var RAW_INPUT:String;
-    public var CHALLENGE_URL:String;
-
+    
     public function new() {
-        trace("BaseSolution");
+        //trace("BaseSolution");
+    }
+
+    public function solvePartOne():String {
+        throw "Not implemented";
+    }
+
+    public function solvePartTwo():String {
+        throw "Not implemented";
     }
 }

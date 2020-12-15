@@ -6,17 +6,14 @@ class Day1 extends BaseSolution {
 
     public function new() {
         super();
-        trace(Sys.getCwd());
-        this.RAW_INPUT = File.getContent("challenges/inputs/Day1.txt");
-        trace(this.RAW_INPUT);
-
-        solve();
+        
+        Sys.println('CHALLENGE_URL: ${this.CHALLENGE_URL}');
+        Sys.println('RAW_INPUT length: ${this.RAW_INPUT.length}');
     }
 
-    public function solve() {
-        trace("solve()");
+    override public function solvePartOne():String {
         var ints = this.RAW_INPUT.split("\n").map(Std.parseInt);
-        trace(ints);
+
         var nInts = ints.length;
         var mulsIfSumTo2020 = [];
         for (i in 0...nInts - 1) {
@@ -29,6 +26,29 @@ class Day1 extends BaseSolution {
                 }
             }
         }
-        trace(mulsIfSumTo2020);
+
+        return Std.string(mulsIfSumTo2020);
+    }
+
+    override public function solvePartTwo():String {
+        var ints = this.RAW_INPUT.split("\n").map(Std.parseInt);
+
+        var nInts = ints.length;
+        var mulsIfSumTo2020 = [];
+        for (i in 0...nInts - 2) {
+            var iEntry = ints[i];
+            for (j in i...nInts - 1) {
+                var jEntry = ints[j];
+                for (k in i...nInts) {
+                    var kEntry = ints[k];
+                    var sum = iEntry + jEntry + kEntry;
+                    if (sum == 2020) {
+                        mulsIfSumTo2020.push(iEntry * jEntry * kEntry);
+                    }
+                }
+            }
+        }
+        
+        return Std.string(mulsIfSumTo2020);
     }
 }
