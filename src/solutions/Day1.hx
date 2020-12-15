@@ -4,13 +4,6 @@ import sys.io.File;
 
 class Day1 extends BaseSolution {
 
-    public function new() {
-        super();
-        
-        Sys.println('CHALLENGE_URL: ${this.CHALLENGE_URL}');
-        Sys.println('RAW_INPUT length: ${this.RAW_INPUT.length}');
-    }
-
     override public function solvePartOne():String {
         var ints = this.RAW_INPUT.split("\n").map(Std.parseInt);
 
@@ -48,7 +41,7 @@ class Day1 extends BaseSolution {
                 }
             }
         }
-        
+
         return Std.string(mulsIfSumTo2020);
     }
 }

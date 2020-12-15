@@ -16,22 +16,21 @@ class Day2 extends BaseSolution {
 
     public function new() {
         super();
-        
-        Sys.println('CHALLENGE_URL: ${this.CHALLENGE_URL}');
-        Sys.println('RAW_INPUT length: ${this.RAW_INPUT.length}');
 
         var lines = this.RAW_INPUT.split("\n");
-        
+
         var extractRegex = ~/(\d+)-(\d+) (\w): (\w+)/;
         for (line in lines) {
             extractRegex.match(line);
             var pwdInfo = {
-                min:Std.parseInt(extractRegex.matched(1)), 
-                max:Std.parseInt(extractRegex.matched(2)), 
-                char:extractRegex.matched(3), 
+                min:Std.parseInt(extractRegex.matched(1)),
+                max:Std.parseInt(extractRegex.matched(2)),
+                char:extractRegex.matched(3),
                 password:extractRegex.matched(4)
             };
+
             //trace(pwdInfo);
+
             this.passwordData.push(pwdInfo);
         }
     }
@@ -42,6 +41,7 @@ class Day2 extends BaseSolution {
         for (c in chars) {
             if (c == char) count++;
         }
+
         return count;
     }
 
@@ -51,7 +51,7 @@ class Day2 extends BaseSolution {
             var occurrences = this.countOccurrencesOf(pwdInfo.char, pwdInfo.password);
             if (occurrences >= pwdInfo.min && occurrences <= pwdInfo.max) validPasswords++;
         }
-        
+
         return Std.string(validPasswords);
     }
 
