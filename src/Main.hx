@@ -4,7 +4,8 @@ class Main {
 
     static var dayClasses:Array<Class<Dynamic>> = [
         Day1,
-        Day2
+        Day2,
+        Day3,
     ];
 
     static public function main() {
