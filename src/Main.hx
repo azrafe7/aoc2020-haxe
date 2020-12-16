@@ -3,9 +3,10 @@ import solutions.*;
 class Main {
 
     static var dayClasses:Array<Class<Dynamic>> = [
-        Day1,
-        Day2,
-        Day3,
+        //Day1,
+        //Day2,
+        //Day3,
+        Day4,
     ];
 
     static public function main() {
