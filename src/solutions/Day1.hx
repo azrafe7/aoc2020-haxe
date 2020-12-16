@@ -1,7 +1,5 @@
 package solutions;
 
-import sys.io.File;
-
 class Day1 extends BaseSolution {
 
     override public function solvePartOne():String {

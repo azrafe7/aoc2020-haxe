@@ -1,6 +1,5 @@
 package solutions;
 
-import sys.io.File;
 import AOC_Utils as Utils;
 
 typedef PasswordInfo = {

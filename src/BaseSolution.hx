@@ -1,8 +1,8 @@
-import AOC_Utils;
+package;
 
 @:autoBuild(Macros.addChallengeRawInputAndUrl())
 class BaseSolution {
-    
+
     public function new() {
         //trace("BaseSolution");
     }

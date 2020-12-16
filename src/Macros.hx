@@ -1,3 +1,5 @@
+package;
+
 import haxe.io.Path;
 import haxe.macro.Context;
 import haxe.macro.Expr;
@@ -15,7 +17,7 @@ class Macros {
      *   `CHALLENGE_URL` will contain the url pointing to the related online challenge
      *
      * Used for subclassesof `BaseSolution`.
-     * 
+     *
      * (adapted from https://code.haxe.org/category/macros/include-file-next-to-module-file.html)
      */
     public static function addChallengeRawInputAndUrl():Array<Field> {
@@ -33,12 +35,12 @@ class Macros {
         if (FileSystem.exists(filePath)) {
              var fileContent:String = File.getContent(filePath);
              Sys.println('Adding "${inputFile}" contents');
-            
+
             // add a field called "RAW_INPUT" to the current fields of the class
             fields.push({
                 name:  "RAW_INPUT",
                 access:  [Access.APublic],
-                kind: FieldType.FVar(macro:String, macro $v{fileContent}), 
+                kind: FieldType.FVar(macro:String, macro $v{fileContent}),
                 pos: Context.currentPos(),
                 doc: "auto-generated from " + filePath,
             });
@@ -53,11 +55,11 @@ class Macros {
             fields.push({
                 name:  "CHALLENGE_URL",
                 access:  [Access.APublic],
-                kind: FieldType.FVar(macro:String, macro $v{CHALLENGE_BASE_URL + dayNum}), 
+                kind: FieldType.FVar(macro:String, macro $v{CHALLENGE_BASE_URL + dayNum}),
                 pos: Context.currentPos(),
                 doc: "auto-generated from " + filePath,
             });
-        } 
+        }
 
         return fields;
     }
