@@ -3,6 +3,8 @@ package solutions;
 import haxe.ds.ReadOnlyArray;
 import AOC_Utils as Utils;
 
+using StringTools;
+
 private enum abstract PassportField(String) to String {
     var byr; // (Birth Year) implicit value: "byr"
     var iyr; // (Issue Year)
@@ -25,12 +27,51 @@ private enum abstract PassportField(String) to String {
 
 private typedef Passport = Map<PassportField, String>;
 
+private class StrictRules {
+
+    inline public static function isStringOfLength(str:String, len:Int):Bool {
+        return str.length == len;
+    }
+
+    inline public static function isStringIntBetween(intStr, min:Int, maxInclusive:Int):Bool {
+        var num:Int = Std.parseInt(intStr);
+        return num >= min && num <= maxInclusive;
+    }
+
+    public static function isFieldValid(passport:Passport, field:PassportField):Bool {
+        var value = passport[field];
+        return switch (field) {
+            case PassportField.byr:
+                isStringOfLength(value, 4) && isStringIntBetween(value, 1920, 2002);
+            case PassportField.iyr:
+                isStringOfLength(value, 4) && isStringIntBetween(value, 2010, 2020);
+            case PassportField.eyr:
+                isStringOfLength(value, 4) && isStringIntBetween(value, 2020, 2030);
+            case PassportField.hgt:
+                (value.endsWith('cm') && isStringIntBetween(value, 150, 193))
+                || (value.endsWith('in') && isStringIntBetween(value, 59, 76));
+            case PassportField.hcl:
+                isStringOfLength(value, 7) && value.startsWith("#") && ~/[0-9a-f]/.match(value);
+            case PassportField.ecl:
+                ~/amb|blu|brn|gry|grn|hzl|oth/.match(value);
+            case PassportField.pid:
+                isStringOfLength(value, 9) && ~/\d{9}/.match(value);
+            default: false;
+        }
+    }
+}
+
 class Day4 extends BaseSolution {
 
     var passports:Array<Passport> = [];
 
+    var neededFields:Array<PassportField> = null; // initialized in constructor
+
     public function new() {
         super();
+
+        this.neededFields = PassportField.ALL_VALUES.copy();
+        this.neededFields.remove(PassportField.cid);
 
         var oneLinePassportStr = "";
         var splitSpaceRegex = ~/\s+/g;
@@ -61,17 +102,30 @@ class Day4 extends BaseSolution {
     override public function solvePartOne():String {
         var validPassports = 0;
 
-        var neededFields:Array<PassportField> = PassportField.ALL_VALUES.copy();
-        neededFields.remove(PassportField.cid);
-
         for (passport in passports) {
-            validPassports += Utils.boolToInt(this.isValidPassport(passport, neededFields));
+            validPassports += Utils.boolToInt(this.isValidPassport(passport, this.neededFields));
         }
 
         return Std.string(validPassports);
     }
 
+    function isStrictlyValidPassport(passport:Passport):Bool {
+        if (!this.isValidPassport(passport, neededFields)) return false;
+
+        for (passportField in neededFields) {
+            if (!StrictRules.isFieldValid(passport, passportField)) return false;
+        }
+
+        return true;
+    }
+
     override public function solvePartTwo():String {
-        return Std.string("");
-   }
+        var strictlyValidPassports = 0;
+
+        for (passport in passports) {
+            strictlyValidPassports += Utils.boolToInt(this.isStrictlyValidPassport(passport));
+        }
+
+        return Std.string(strictlyValidPassports);
+    }
 }
