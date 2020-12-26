@@ -8,7 +8,8 @@ class Main {
         //Day3,
         //Day4,
         //Day5,
-        Day6,
+        //Day6,
+        Day7,
     ];
 
     static public function main() {
@@ -18,7 +19,7 @@ class Main {
             var day = Type.createInstance(dayClass, []);
 
             Sys.println('  CHALLENGE_URL: ${day.CHALLENGE_URL}');
-            var rawInputFirstLine = day.RAW_INPUT.substring(0, day.RAW_INPUT.indexOf("\n") - 1);
+            var rawInputFirstLine = day.RAW_INPUT.substring(0, day.RAW_INPUT.indexOf("\n"));
             Sys.println('  RAW_INPUT SAMPLE: "${rawInputFirstLine}"');
             Sys.println('  RAW_INPUT LENGTH: ${day.RAW_INPUT.length}');
 
