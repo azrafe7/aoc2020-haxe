@@ -32,6 +32,17 @@ class Day5 extends BaseSolution {
     }
 
     override public function solvePartTwo():String {
-        return Std.string("");
+        var sortedSeatIds = seatIds.copy();
+        sortedSeatIds.sort((a, b) -> a - b);
+
+        var mySeat = [];
+        for (i in 1...sortedSeatIds.length) {
+            var prevSeatId = sortedSeatIds[i-1];
+            if (sortedSeatIds[i] - prevSeatId == 2) {
+                mySeat.push(prevSeatId + 1);
+            }
+        }
+
+        return Std.string(mySeat[0]);
    }
 }
