@@ -19,4 +19,30 @@ class AOC_Utils {
 
         return matches;
     }
+
+    public static function intToBinaryStr(i:Int):String {
+        var res = "";
+        if (i == 0) return "0";
+
+        while (i > 0) {
+            res = (if (i & 1 == 1) "1" else "0") + res;
+            i = i >> 1;
+    	}
+
+        return res;
+     }
+
+     public static function binaryStrToInt(str:String):Int {
+        var res:Int = 0;
+        var bitSetMask:Int = 0;
+        var len = str.length;
+        var reversedChars = [for (i in 0...len) str.charAt(len - i - 1)];
+        var i = 0;
+        for (ch in reversedChars) {
+            bitSetMask = (if (ch == "1") 1 else 0) << i;
+            res |= bitSetMask;
+        	i++;
+    	}
+        return res;
+    }
 }
