@@ -1,6 +1,6 @@
 package solutions;
 
-class Day3 extends BaseSolution {
+class Day3 implements BaseSolution {
 
     var mapTile:Array<Array<String>> = [];
     var mapTileRows:Int;
@@ -10,8 +10,6 @@ class Day3 extends BaseSolution {
     var SLOPES_Y = [1, 1, 1, 1, 2];
 
     public function new() {
-        super();
-
         for (line in this.RAW_INPUT.split("\n")) {
             this.mapTile.push(line.split(""));
         }
@@ -39,13 +37,13 @@ class Day3 extends BaseSolution {
         return treeCount;
     }
 
-    override public function solvePartOne():String {
+    public function solvePartOne():String {
         var treeCount = this.countTrees(3, 1);
 
         return Std.string(treeCount);
     }
 
-    override public function solvePartTwo():String {
+    public function solvePartTwo():String {
         var treeCount = 0;
         var product:Float = 1.0;
 

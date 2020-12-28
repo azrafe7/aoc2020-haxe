@@ -1,16 +1,15 @@
 package solutions;
 
-class Day0 extends BaseSolution {
+class Day0 implements BaseSolution {
 
     public function new() {
-        super();
     }
 
-    override public function solvePartOne():String {
+    public function solvePartOne():String {
         return Std.string("");
     }
 
-    override public function solvePartTwo():String {
+    public function solvePartTwo():String {
         return Std.string("");
    }
 }

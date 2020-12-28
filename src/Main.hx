@@ -2,14 +2,14 @@ import solutions.*;
 
 class Main {
 
-    static var dayClasses:Array<Class<Dynamic>> = [
-        //Day1,
-        //Day2,
-        //Day3,
-        //Day4,
-        //Day5,
-        //Day6,
-        Day7,
+    static var dayClasses:Array<Class<BaseSolution>> = [
+        Day1,
+        Day2,
+        Day3,
+        Day4,
+        Day5,
+        Day6,
+        //Day7,
     ];
 
     static public function main() {

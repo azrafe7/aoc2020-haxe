@@ -5,6 +5,73 @@ import AOC_Utils as Utils;
 
 using StringTools;
 
+class Day4 implements BaseSolution {
+
+    var passports:Array<Passport> = [];
+
+    var neededFields:Array<PassportField> = null; // initialized in constructor
+
+    public function new() {
+        this.neededFields = PassportField.ALL_VALUES.copy();
+        this.neededFields.remove(PassportField.cid);
+
+        var oneLinePassportStr = "";
+        var splitSpaceRegex = ~/\s+/g;
+        for (line in this.RAW_INPUT.split("\n")) {
+            if (line != "") {
+                oneLinePassportStr += line + " ";
+            } else {
+                oneLinePassportStr = StringTools.trim(oneLinePassportStr);
+                if (oneLinePassportStr != "") {
+                    var passport = new Passport();
+                    var pairs = splitSpaceRegex.split(oneLinePassportStr).map(s -> s.split(":"));
+                    pairs.map(p -> passport[PassportField.fromString(p[0])] = p[1]);
+                    passports.push(passport);
+                }
+                oneLinePassportStr = "";
+            }
+        }
+    }
+
+    function isValidPassport(passport:Passport, neededFields:Array<PassportField>):Bool {
+        for (passportField in neededFields) {
+            if (!passport.exists(passportField)) return false;
+        }
+
+        return true;
+    }
+
+    public function solvePartOne():String {
+        var validPassports = 0;
+
+        for (passport in passports) {
+            validPassports += Utils.boolToInt(this.isValidPassport(passport, this.neededFields));
+        }
+
+        return Std.string(validPassports);
+    }
+
+    function isStrictlyValidPassport(passport:Passport):Bool {
+        if (!this.isValidPassport(passport, neededFields)) return false;
+
+        for (passportField in neededFields) {
+            if (!StrictRules.isFieldValid(passport, passportField)) return false;
+        }
+
+        return true;
+    }
+
+    public function solvePartTwo():String {
+        var strictlyValidPassports = 0;
+
+        for (passport in passports) {
+            strictlyValidPassports += Utils.boolToInt(this.isStrictlyValidPassport(passport));
+        }
+
+        return Std.string(strictlyValidPassports);
+    }
+}
+
 private enum abstract PassportField(String) to String {
     var byr; // (Birth Year) implicit value: "byr"
     var iyr; // (Issue Year)
@@ -15,7 +82,7 @@ private enum abstract PassportField(String) to String {
     var pid; // (Passport ID)
     var cid; // (Country ID)
 
-    public static final ALL_VALUES:ReadOnlyArray<PassportField> = Macros.getEnumValues(PassportField);
+    public static final ALL_VALUES:ReadOnlyArray<PassportField> = EnumMacros.getEnumValues(PassportField);
 
     public static function fromString(str:String):PassportField {
         if (PassportField.ALL_VALUES.indexOf(cast str) < 0)
@@ -58,74 +125,5 @@ private class StrictRules {
                 isStringOfLength(value, 9) && ~/\d{9}/.match(value);
             default: false;
         }
-    }
-}
-
-class Day4 extends BaseSolution {
-
-    var passports:Array<Passport> = [];
-
-    var neededFields:Array<PassportField> = null; // initialized in constructor
-
-    public function new() {
-        super();
-
-        this.neededFields = PassportField.ALL_VALUES.copy();
-        this.neededFields.remove(PassportField.cid);
-
-        var oneLinePassportStr = "";
-        var splitSpaceRegex = ~/\s+/g;
-        for (line in this.RAW_INPUT.split("\n")) {
-            if (line != "") {
-                oneLinePassportStr += line + " ";
-            } else {
-                oneLinePassportStr = StringTools.trim(oneLinePassportStr);
-                if (oneLinePassportStr != "") {
-                    var passport = new Passport();
-                    var pairs = splitSpaceRegex.split(oneLinePassportStr).map(s -> s.split(":"));
-                    pairs.map(p -> passport[PassportField.fromString(p[0])] = p[1]);
-                    passports.push(passport);
-                }
-                oneLinePassportStr = "";
-            }
-        }
-    }
-
-    function isValidPassport(passport:Passport, neededFields:Array<PassportField>):Bool {
-        for (passportField in neededFields) {
-            if (!passport.exists(passportField)) return false;
-        }
-
-        return true;
-    }
-
-    override public function solvePartOne():String {
-        var validPassports = 0;
-
-        for (passport in passports) {
-            validPassports += Utils.boolToInt(this.isValidPassport(passport, this.neededFields));
-        }
-
-        return Std.string(validPassports);
-    }
-
-    function isStrictlyValidPassport(passport:Passport):Bool {
-        if (!this.isValidPassport(passport, neededFields)) return false;
-
-        for (passportField in neededFields) {
-            if (!StrictRules.isFieldValid(passport, passportField)) return false;
-        }
-
-        return true;
-    }
-
-    override public function solvePartTwo():String {
-        var strictlyValidPassports = 0;
-
-        for (passport in passports) {
-            strictlyValidPassports += Utils.boolToInt(this.isStrictlyValidPassport(passport));
-        }
-
-        return Std.string(strictlyValidPassports);
     }
 }

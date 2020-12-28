@@ -1,8 +1,8 @@
 package solutions;
 
-class Day1 extends BaseSolution {
+class Day1 implements BaseSolution {
 
-    override public function solvePartOne():String {
+    public function solvePartOne():String {
         var ints = this.RAW_INPUT.split("\n").map(Std.parseInt);
 
         var nInts = ints.length;
@@ -21,7 +21,7 @@ class Day1 extends BaseSolution {
         return Std.string(mulsIfSumTo2020);
     }
 
-    override public function solvePartTwo():String {
+    public function solvePartTwo():String {
         var ints = this.RAW_INPUT.split("\n").map(Std.parseInt);
 
         var nInts = ints.length;

@@ -4,13 +4,11 @@ import AOC_Utils as Utils;
 
 using StringTools;
 
-class Day5 extends BaseSolution {
+class Day5 implements BaseSolution {
 
     var seatIds:Array<Int> = [];
 
     public function new() {
-        super();
-
         for (line in this.RAW_INPUT.split("\n")) {
             var binStr = line.replace("B", "1").replace("F", "0").replace("R", "1").replace("L", "0");
             seatIds.push(Utils.binaryStrToInt(binStr));
@@ -22,7 +20,7 @@ class Day5 extends BaseSolution {
         //Sys.println(Utils.binaryStrToInt(binStr));
     }
 
-    override public function solvePartOne():String {
+    public function solvePartOne():String {
         var maxSeatId = -1;
         for (pass in seatIds) {
             if (pass > maxSeatId) maxSeatId = pass;
@@ -31,7 +29,7 @@ class Day5 extends BaseSolution {
         return Std.string(maxSeatId);
     }
 
-    override public function solvePartTwo():String {
+    public function solvePartTwo():String {
         var sortedSeatIds = seatIds.copy();
         sortedSeatIds.sort((a, b) -> a - b);
 

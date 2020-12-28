@@ -1,17 +1,10 @@
 package;
 
 @:autoBuild(Macros.addChallengeRawInputAndUrl())
-class BaseSolution {
+interface BaseSolution {
+    var CHALLENGE_URL:String;
+    var RAW_INPUT:String;
 
-    public function new() {
-        //trace("BaseSolution");
-    }
-
-    public function solvePartOne():String {
-        throw "Not implemented";
-    }
-
-    public function solvePartTwo():String {
-        throw "Not implemented";
-    }
+    function solvePartOne():String;
+    function solvePartTwo():String;
 }

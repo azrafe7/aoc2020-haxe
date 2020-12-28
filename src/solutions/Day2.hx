@@ -9,13 +9,11 @@ typedef PasswordInfo = {
     password:String
 }
 
-class Day2 extends BaseSolution {
+class Day2 implements BaseSolution {
 
     var passwordData:Array<PasswordInfo> = [];
 
     public function new() {
-        super();
-
         var lines = this.RAW_INPUT.split("\n");
 
         var extractRegex = ~/(\d+)-(\d+) (\w): (\w+)/;
@@ -44,7 +42,7 @@ class Day2 extends BaseSolution {
         return count;
     }
 
-    override public function solvePartOne():String {
+    public function solvePartOne():String {
         var validPasswords = 0;
         for (pwdInfo in this.passwordData) {
             var occurrences = this.countOccurrencesOf(pwdInfo.char, pwdInfo.password);
@@ -54,7 +52,7 @@ class Day2 extends BaseSolution {
         return Std.string(validPasswords);
     }
 
-    override public function solvePartTwo():String {
+    public function solvePartTwo():String {
         var validPasswords = 0;
         for (pwdInfo in this.passwordData) {
             var len = pwdInfo.password.length;

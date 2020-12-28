@@ -2,13 +2,11 @@ package solutions;
 
 private typedef StringSet = Map<String, Bool>;
 
-class Day6 extends BaseSolution {
+class Day6 implements BaseSolution {
 
     var groups:Array<Array<String>> = [];
 
     public function new() {
-        super();
-
         var group = [];
         for (line in this.RAW_INPUT.split("\n")) {
             if (line != "") {
@@ -22,7 +20,7 @@ class Day6 extends BaseSolution {
         //Sys.println(groups);
     }
 
-    override public function solvePartOne():String {
+    public function solvePartOne():String {
         var sum = 0;
 
         for (group in groups) {
@@ -38,7 +36,7 @@ class Day6 extends BaseSolution {
         return Std.string(sum);
     }
 
-    override public function solvePartTwo():String {
+    public function solvePartTwo():String {
         var sum = 0;
 
         for (group in groups) {
