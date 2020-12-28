@@ -1,5 +1,7 @@
 package;
 
+using StringTools;
+
 class AOC_Utils {
     inline public static function boolXor(a:Bool, b:Bool):Bool {
         return a && !b || (!a && b);
@@ -15,6 +17,28 @@ class AOC_Utils {
         while (ereg.match(input)) {
             matches.push(ereg.matched(index));
             input = ereg.matchedRight();
+        }
+
+        return matches;
+    }
+
+    public static function getMatchedGroups(ereg:EReg, input:String, continueToMatchRight=true):Array<String> {
+        var matches = [];
+        Sys.println(ereg.match(input));
+        while (ereg.match(input)) {
+            for (index in 1...6) {
+                try {
+                    var matchedGroup = ereg.matched(index);
+                    Sys.println('matched "$matchedGroup"');
+                    matches.push(matchedGroup);
+                } catch (e) {
+                    Sys.println("Error: " + Std.string(e));
+                    if (!Std.string(e).contains("Invalid group")) throw e; // rethrow
+                }
+            }
+
+            if (continueToMatchRight) input = ereg.matchedRight();
+            else break;
         }
 
         return matches;
