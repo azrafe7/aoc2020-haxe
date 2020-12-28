@@ -8,6 +8,7 @@ import sys.FileSystem;
 import sys.io.File;
 
 using haxe.macro.Tools;
+using StringTools;
 
 class Macros {
     public static var INPUTS_DIR = "challenges/inputs";
@@ -36,6 +37,8 @@ class Macros {
         // detect if template file exists
         if (FileSystem.exists(filePath)) {
             var fileContent:String = File.getContent(filePath);
+            // replace "\r\n" with "\n"
+            fileContent = fileContent.replace("\r\n", "\n");
             Sys.println('Adding "${inputFile}" contents');
 
             // add a field called "RAW_INPUT" to the current fields of the class
