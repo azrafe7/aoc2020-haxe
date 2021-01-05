@@ -3,4 +3,4 @@ bin/
 bin-debug/
 bin-release/
 
-.vscode/
+#.vscode/
