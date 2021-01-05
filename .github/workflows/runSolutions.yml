@@ -34,7 +34,7 @@ jobs:
 
       # run solutions
       - name: Advent Of Code 2020 Solutions
-        run: haxe build.hxml
+        run: haxe interp.hxml
 
       ## Runs a single command using the runners shell
       #- name: Run a one-line script

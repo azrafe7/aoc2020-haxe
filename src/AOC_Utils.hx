@@ -22,10 +22,13 @@ class AOC_Utils {
         return matches;
     }
 
-    public static function getMatchedGroups(ereg:EReg, input:String, continueToMatchRight=true):Array<String> {
+    /*public static function getMatchedGroups(ereg:EReg, input:String, continueToMatchRight=true):Array<String> {
         var matches = [];
-        Sys.println(ereg.match(input));
+        //Sys.println(ereg.match(input));
         while (ereg.match(input)) {
+        #if cs
+            Sys.println("CS: " + @:privateAccess ereg.m.Groups.Count);
+        #end
             for (index in 1...6) {
                 try {
                     var matchedGroup = ereg.matched(index);
@@ -39,9 +42,17 @@ class AOC_Utils {
 
             if (continueToMatchRight) input = ereg.matchedRight();
             else break;
+
+            Sys.println('INPUT: "$input"');
         }
 
         return matches;
+    }*/
+
+    @:generic
+    public static function arrayUnique<T>(arr:Array<T>):Array<T> {
+        var map = [for (k in arr) k => true];
+        return [for (k in map.keys()) k];
     }
 
     public static function intToBinaryStr(i:Int):String {
