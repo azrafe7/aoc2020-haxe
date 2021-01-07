@@ -6,4 +6,5 @@
  - Day 5: Binary Boarding  [[online](https://adventofcode.com/2020/day/5) | [offline (markdown)](descriptions/Day5.md) | [input](inputs/Day5.txt) | [solution](../src/solutions/Day5.hx)]
  - Day 6: Custom Customs  [[online](https://adventofcode.com/2020/day/6) | [offline (markdown)](descriptions/Day6.md) | [input](inputs/Day6.txt) | [solution](../src/solutions/Day6.hx)]
  - Day 7: Handy Haversacks  [[online](https://adventofcode.com/2020/day/7) | [offline (markdown)](descriptions/Day7.md) | [input](inputs/Day7.txt) | [solution](../src/solutions/Day7.hx)]
+ - Day 8: Handheld Halting  [[online](https://adventofcode.com/2020/day/8) | [offline (markdown)](descriptions/Day8.md) | [input](inputs/Day8.txt) | [solution](../src/solutions/Day8.hx)]
  -

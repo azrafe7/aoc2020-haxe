@@ -11,5 +11,5 @@ class Day0 implements BaseSolution {
 
     public function solvePartTwo():String {
         return Std.string("");
-   }
+    }
 }
