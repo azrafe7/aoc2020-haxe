@@ -20,7 +20,7 @@ private class OpCode {
     }
 
     public function toString() {
-        return {cmd:cmd, delta:delta};
+        return '{cmd:$cmd, delta:$delta}';
     }
 }
 
