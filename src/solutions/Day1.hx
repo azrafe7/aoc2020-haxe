@@ -18,7 +18,7 @@ class Day1 implements BaseSolution {
             }
         }
 
-        return Std.string(mulsIfSumTo2020);
+        return Std.string(mulsIfSumTo2020[0]);
     }
 
     public function solvePartTwo():String {
@@ -40,6 +40,6 @@ class Day1 implements BaseSolution {
             }
         }
 
-        return Std.string(mulsIfSumTo2020);
+        return Std.string(mulsIfSumTo2020[0]);
     }
 }
