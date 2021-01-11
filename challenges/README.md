@@ -7,4 +7,5 @@
  - Day 6: Custom Customs  [[online](https://adventofcode.com/2020/day/6) | [offline (markdown)](descriptions/Day6.md) | [input](inputs/Day6.txt) | [solution](../src/solutions/Day6.hx)]
  - Day 7: Handy Haversacks  [[online](https://adventofcode.com/2020/day/7) | [offline (markdown)](descriptions/Day7.md) | [input](inputs/Day7.txt) | [solution](../src/solutions/Day7.hx)]
  - Day 8: Handheld Halting  [[online](https://adventofcode.com/2020/day/8) | [offline (markdown)](descriptions/Day8.md) | [input](inputs/Day8.txt) | [solution](../src/solutions/Day8.hx)]
+ - Day 9: Encoding Error  [[online](https://adventofcode.com/2020/day/9) | [offline (markdown)](descriptions/Day9.md) | [input](inputs/Day9.txt) | [solution](../src/solutions/Day9.hx)]
  -
