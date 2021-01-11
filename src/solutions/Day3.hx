@@ -45,13 +45,17 @@ class Day3 implements BaseSolution {
 
     public function solvePartTwo():String {
         var treeCount = 0;
-        var product:UInt = 1;
+        var product:Float = 1.0;
 
         for (i in 0...this.SLOPES_X.length) {
             treeCount = this.countTrees(SLOPES_X[i], SLOPES_Y[i]);
             product *= treeCount;
         }
 
+    #if (!java)
         return Std.string(product);
+    #else
+        return Std.string(java.NativeString.format("%.0f", product));
+    #end
     }
 }
