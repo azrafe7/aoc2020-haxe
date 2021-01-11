@@ -85,8 +85,11 @@ jobs:
         run: |
           haxelib install hxcpp
         if: always()
-      - name: '[cpp] Advent Of Code 2020 Solutions'
+      - name: '[cpp] Compile'
         run: |
           haxe build/cpp.hxml
+        if: always()
+      - name: '[cpp] Advent Of Code 2020 Solutions'
+        run: |
           bin/cpp/Main
         if: always()
