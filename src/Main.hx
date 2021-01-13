@@ -24,7 +24,7 @@ class Main {
         6 => ['6310', '3193'],
         7 => ['126', '220149'],
         8 => ['1331', '1121'],
-        9 => ['something', 'something'],
+        9 => ['36845998', 'something'],
     ];
 
     static var actualSolutions:Map<Int, Array<String>> = new Map();
