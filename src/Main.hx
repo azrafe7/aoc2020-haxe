@@ -3,14 +3,14 @@ import solutions.*;
 class Main {
 
     static var dayClasses:Array<Class<BaseSolution>> = [
-        /*Day1,
+        Day1,
         Day2,
         Day3,
         Day4,
         Day5,
         Day6,
         Day7,
-        Day8,*/
+        Day8,
         Day9,
     ];
 
@@ -24,7 +24,7 @@ class Main {
         6 => ['6310', '3193'],
         7 => ['126', '220149'],
         8 => ['1331', '1121'],
-        9 => ['36845998', 'something'],
+        9 => ['36845998', '4830226'],
     ];
 
     static var actualSolutions:Map<Int, Array<String>> = new Map();

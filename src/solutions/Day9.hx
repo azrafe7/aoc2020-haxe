@@ -69,6 +69,29 @@ class Day9 implements BaseSolution {
     }
 
     public function solvePartTwo():String {
-        return Std.string("");
+        var invalidNumFromPartOne = Std.parseFloat(solvePartOne());
+
+        var accList = [];
+        var sum = 0.0;
+        for (i in 0...numbers.length - 1) {
+            sum = numbers[i];
+            accList.push(numbers[i]);
+            for (j in i + 1...numbers.length) {
+                sum += numbers[j];
+                accList.push(numbers[j]);
+                if (sum >= invalidNumFromPartOne) {
+                    break;
+                }
+            }
+            if (sum == invalidNumFromPartOne) break;
+            else accList = [];
+        }
+
+        //Sys.println(accList);
+        var sortedAccList = accList.copy();
+        sortedAccList.sort(Reflect.compare);
+        //Sys.println(sortedAccList);
+
+        return Std.string(sortedAccList[0] + sortedAccList[sortedAccList.length - 1]);
     }
 }
