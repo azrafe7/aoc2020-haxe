@@ -54,7 +54,7 @@ class Macros {
         }
 
         // add a field called "CHALLENGE_URL" to the current fields of the class
-        var extractDayNum = ~/[^\d]+(\d)+/;
+        var extractDayNum = ~/(\d+)/;
         if (extractDayNum.match(ref.name)) {
             var dayNum = extractDayNum.matched(1);
             fields.push({
