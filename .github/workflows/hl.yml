@@ -1,0 +1,72 @@
+# This is a basic workflow to help you get started with Action
+name: HL for Linux
+
+# Controls when the action will run.
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ hl ]
+  #pull_request:
+  #  branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      # setup haxe and print version
+      - uses: krdlab/setup-haxe@v1
+        with:
+          haxe-version: 4.1.4
+      - run: |
+          haxe -version
+          haxelib install hxnodejs
+
+      # hl
+      - name: '[hl] Clone repo'
+        uses: actions/checkout@v2
+        with:
+          repository: HaxeFoundation/hashlink
+          path: hl
+
+      - name: '[hl] Install dependencies'
+        run: |
+          ls hl
+          cd hl
+          sudo apt-get install -qqy \
+            cmake \
+            make \
+            gcc \
+            libz-dev \
+            zlib1g-dev \
+            libpng-dev \
+            libsdl2-dev \
+            libvorbis-dev \
+            libalut-dev \
+            libmbedtls-dev \
+            libturbojpeg0-dev \
+            libuv1-dev \
+            libopenal-dev \
+            neko \
+            curl \
+            ca-certificates
+
+      - name: '[hl] Build hashlink'
+        run: |
+          cd hl
+          haxelib install hashlink
+          cmake .
+          make
+          haxe -hl hello.hl -cp other/tests -main HelloWorld -D interp
+          ls
+          bin/hl hello.hl
