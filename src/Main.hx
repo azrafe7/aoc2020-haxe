@@ -12,6 +12,7 @@ class Main {
         Day7,
         Day8,
         Day9,
+        Day10,
     ];
 
     static var expectedSolutions:Map<Int, Array<String>> = [
@@ -25,6 +26,7 @@ class Main {
         7 => ['126', '220149'],
         8 => ['1331', '1121'],
         9 => ['36845998', '4830226'],
+        10 => ['2210', 'something'],
     ];
 
     static var actualSolutions:Map<Int, Array<String>> = new Map();

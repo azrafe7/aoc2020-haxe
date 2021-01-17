@@ -93,3 +93,44 @@ jobs:
         run: |
           bin/cpp/Main
         if: always()
+
+      - name: '[hl] Clone repo'
+        uses: actions/checkout@v2
+        with:
+          repository: HaxeFoundation/hashlink
+          path: hl
+        if: always()
+      - name: '[hl] Install dependencies'
+        run: |
+          ls hl
+          cd hl
+          sudo apt-get install -qqy \
+            cmake \
+            make \
+            gcc \
+            libz-dev \
+            zlib1g-dev \
+            libpng-dev \
+            libsdl2-dev \
+            libvorbis-dev \
+            libalut-dev \
+            libmbedtls-dev \
+            libturbojpeg0-dev \
+            libuv1-dev \
+            libopenal-dev \
+            neko \
+            curl \
+            ca-certificates
+        if: always()
+      - name: '[hl] Build hashlink'
+        run: |
+          cd hl
+          haxelib install hashlink
+          cmake .
+          make
+        if: always()
+      - name: '[hl] Advent Of Code 2020 Solutions'
+        run: |
+          haxe build/hl.hxml
+          hl/bin/hl bin/main.hl
+        if: always()

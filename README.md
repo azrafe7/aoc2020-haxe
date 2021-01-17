@@ -15,7 +15,7 @@ List of challenges (& attempted solutions) so far:
  - Day 7: Handy Haversacks  [[online](https://adventofcode.com/2020/day/7) | [offline (markdown)](challenges/descriptions/Day7.md) | [input](challenges/inputs/Day7.txt) | [solution](src/solutions/Day7.hx)]
  - Day 8: Handheld Halting  [[online](https://adventofcode.com/2020/day/8) | [offline (markdown)](challenges/descriptions/Day8.md) | [input](challenges/inputs/Day8.txt) | [solution](src/solutions/Day8.hx)]
  - Day 9: Encoding Error  [[online](https://adventofcode.com/2020/day/9) | [offline (markdown)](challenges/descriptions/Day9.md) | [input](challenges/inputs/Day9.txt) | [solution](src/solutions/Day9.hx)]
- - Day 10: Encoding Error  [[online](https://adventofcode.com/2020/day/10) | [offline (markdown)](challenges/descriptions/Day10.md) | [input](challenges/inputs/Day10.txt) | [solution](src/solutions/Day10.hx)]
+ - Day 10: Adapter Array  [[online](https://adventofcode.com/2020/day/10) | [offline (markdown)](challenges/descriptions/Day10.md) | [input](challenges/inputs/Day10.txt) | [solution](src/solutions/Day10.hx)]
  -
 
  (currently being [tested via Github Actions](https://github.com/azrafe7/aoc2020-haxe/actions?query=workflow%3A%22Run+AOC2020+Solutions%22) for interp, nodejs, neko, php, C#, java/jvm, cpp)
