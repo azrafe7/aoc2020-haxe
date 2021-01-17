@@ -56,7 +56,7 @@ class Day10 implements BaseSolution {
     public function new() {
         //this.RAW_INPUT = TEST_INPUT_PART_ONE;
         //this.RAW_INPUT = TEST_INPUT_PART_ONE_LARGER;
-        this.joltageRatings = this.RAW_INPUT.trim().split("\n").map(Std.parseInt);
+        this.joltageRatings = [for (i => int in this.RAW_INPUT.trim().split("\n").map(Std.parseInt)) int];
         //Sys.println(joltageRatings);
 
         sortedJoltageRatings = joltageRatings.copy();
@@ -78,7 +78,7 @@ class Day10 implements BaseSolution {
         }
         freqs[3] += 1;
 
-        Sys.println(freqs);
+        Sys.println(Std.string(freqs));
         return Std.string(freqs[1] * freqs[3]);
     }
 
