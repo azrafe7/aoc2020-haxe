@@ -18,4 +18,4 @@ List of challenges (& attempted solutions) so far:
  - Day 10: Adapter Array  [[online](https://adventofcode.com/2020/day/10) | [offline (markdown)](challenges/descriptions/Day10.md) | [input](challenges/inputs/Day10.txt) | [solution](src/solutions/Day10.hx)]
  -
 
- (currently being [tested via Github Actions](https://github.com/azrafe7/aoc2020-haxe/actions?query=workflow%3A%22Run+AOC2020+Solutions%22) for interp, nodejs, neko, php, C#, java/jvm, cpp)
+ (currently being [tested via Github Actions](https://github.com/azrafe7/aoc2020-haxe/actions?query=workflow%3A%22Run+AOC2020+Solutions%22) for interp, nodejs, neko, php, C#, java/jvm, cpp, hl)
