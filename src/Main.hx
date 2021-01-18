@@ -1,5 +1,7 @@
 import solutions.*;
 
+using StringTools;
+
 class Main {
 
     static var dayClasses:Array<Class<BaseSolution>> = [
@@ -39,7 +41,7 @@ class Main {
             var day = Type.createInstance(dayClass, []);
 
             Sys.println('  CHALLENGE_URL: ${day.CHALLENGE_URL}');
-            var rawInputFirstLine = day.RAW_INPUT.substring(0, day.RAW_INPUT.indexOf("\n"));
+            var rawInputFirstLine = day.RAW_INPUT.substring(0, day.RAW_INPUT.indexOf("\n")).rtrim();
             Sys.println('  RAW_INPUT SAMPLE: "${rawInputFirstLine}"');
             Sys.println('  RAW_INPUT LENGTH: ${day.RAW_INPUT.length}');
 
