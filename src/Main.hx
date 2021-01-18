@@ -79,12 +79,13 @@ class Main {
             var actual = actualSolutions[k];
             var expected = expectedSolutions[k];
             for (i => part in actual) {
+                var pending = part == "pending";
                 var ok = part == expected[i];
-                if (allGood && !ok) {
+                if (allGood && !ok && !pending) {
                     allGood = false;
                     failedTest = 'Day$k: expected ${expected[i]}, was ${actual[i]}';
                 }
-                var resStr = if (ok) "." else "F";
+                var resStr = if (pending) "P" else if (ok) "." else "F";
                 Sys.print('$resStr');
             }
             Sys.print(' ');
