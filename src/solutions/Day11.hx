@@ -27,8 +27,8 @@ class Day11 implements BaseSolution {
     var numCols:Int;
 
     public function new() {
-        this.RAW_INPUT = TEST_INPUT_PART_ONE;
-        for (line in this.RAW_INPUT.split("\n").map(StringTools.trim)) {
+        //this.RAW_INPUT = TEST_INPUT_PART_ONE;
+        for (line in this.RAW_INPUT.trim().split("\n").map(StringTools.trim)) {
             var seatRow:Array<Seat> = [for (tile in line.split("")) (tile:Seat)];
             //Sys.println(seatRow);
             seats.push(seatRow);
@@ -40,9 +40,9 @@ class Day11 implements BaseSolution {
         printSeats();
     }
 
-    function printSeats() {
+    inline function printSeats() {
         //Sys.println('-- SEATS [${numRows}R x ${numCols}C]');
-        for (row in seats) Sys.println(Std.string(row).split(",").join(""));
+        //for (row in seats) Sys.println(Std.string(row).split(",").join(""));
     }
 
     function addFloorBorders(seats:Array<Array<Seat>>):Void {
@@ -67,22 +67,30 @@ class Day11 implements BaseSolution {
         return occupied;
     }
 
-    function updateSeats(seats:Array<Array<Seat>>, ?step:Int) {
-        if (step != null) Sys.println('\n-- Step $step');
+    function updateSeats(seats:Array<Array<Seat>>, ?step:Int):Bool {
+        //if (step != null) Sys.println('\n-- Step $step');
 
         // clone seats
         var seatsClone = [for (row in seats) [for (seat in row) seat]];
 
+        var hasChanges = false;
         for (r in 1...numRows + 1) {
             for (c in 1...numCols + 1) {
                 var seat = seatsClone[r][c];
                 var occupiedNeighbours = countOccupiedNeighbours(seatsClone, r, c);
-                if (seat == Seat.EMPTY && occupiedNeighbours == 0) seats[r][c] = Seat.OCCUPIED;
-                else if (seat == Seat.OCCUPIED && occupiedNeighbours >= 4) seats[r][c] = Seat.EMPTY;
+                if (seat == Seat.EMPTY && occupiedNeighbours == 0) {
+                    seats[r][c] = Seat.OCCUPIED;
+                    hasChanges = true;
+                } else if (seat == Seat.OCCUPIED && occupiedNeighbours >= 4) {
+                    seats[r][c] = Seat.EMPTY;
+                    hasChanges = true;
+                }
             }
         }
 
         printSeats();
+
+        return hasChanges;
     }
 
     public function solvePartOne():String {
@@ -92,8 +100,11 @@ class Day11 implements BaseSolution {
         }
 
         printSeats();
-        for (i in 0...4) {
-            updateSeats(seats, i);
+        var i = 0;
+        var hasChanges = true;
+        while (hasChanges) {
+            hasChanges = updateSeats(seats, i);
+            i++;
         }
 
         var numOccupied = Lambda.flatten(seats).filter(it -> it == Seat.OCCUPIED).length;

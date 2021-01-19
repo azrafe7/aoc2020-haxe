@@ -30,7 +30,7 @@ class Main {
         8 => ['1331', '1121'],
         9 => ['36845998', '4830226'],
         10 => ['2210', 'something'],
-        11 => ['something', 'something'],
+        11 => ['2152', 'something'],
     ];
 
     static var actualSolutions:Map<Int, Array<String>> = new Map();
