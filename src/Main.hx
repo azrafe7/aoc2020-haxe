@@ -5,7 +5,7 @@ using StringTools;
 class Main {
 
     static var dayClasses:Array<Class<BaseSolution>> = [
-        Day1,
+        /*Day1,
         Day2,
         Day3,
         Day4,
@@ -14,7 +14,7 @@ class Main {
         Day7,
         Day8,
         Day9,
-        Day10,
+        Day10,*/
         Day11,
     ];
 
